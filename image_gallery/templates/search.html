@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+{{block.super}}
+<main class="container home m-auto">
+    <div class="row text-center">
+        {% if images %}
+            <h3 class="py-4 text-center">
+                We found {{ images | length}} search Results for <i class="text-decoration-underline">{{message}}</i> Category
+            </h3>
+        {% else %}
+            <h5>Sorry,Your search - {{message}} - did not match any categories</h5>
+            <h5>Suggestions:</h5>
+            <ul class="text-right">
+                <li>Make sure that all words are spelled correctly.</li>
+                <li>Try different keywords.e.g Food,Animal,culture etc</li>
+                <li>Try more general keywords  </li> 
+            </ul>
+        {% endif %}
+    </div>
+    <div>
+
+    </div>
+
+    <div class="d-flex  flex-wrap justify-content-around">
+        {% if images %}
+        {% for photo in images %}
+        <button type="button" class="btn img-size w-50" data-bs-toggle="modal" data-bs-target="#id{{photo.id}}" data-aos="zoom-in-down" data-aos-duration="2000" >
+            <img src="{{photo.image.url}}" class="img-fluid" alt="Image">
+        </button>
+        
+        <!-- pop up -->
+        <div class="modal  fade detail" id="id{{photo.id}}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered ">
+            <div class="modal-content bg-dark">
+                <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">{{ photo.img_name }}</h5>
+                <button type="button" class="btn-close btn-danger" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <img src="{{photo.image.url}}" class="img-fluid" alt="Image">
+                    <p>
+                        {{photo.img_description}}
+                    </p>
+                    <div class="d-flex">
+                        <h4>Category: {{photo.category}} &nbsp;</h4>
+                        <h4> &nbsp; Lacated in: {{photo.location}}</h4>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+            </div>
+        </div>
+        {% endfor %}
+        {% endif %}
+    </div>
+</main>
+{% endblock %}
