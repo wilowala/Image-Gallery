@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    {{block.super}}
+   <main class="home " >
+    <div class="container-fluid">
+        <img src="{% static 'images/back.jpg' %}" style="height:94vh; width:100%" class="img-fluid" alt="">
+
+    </div>
+   </main>
+{% endblock %}
