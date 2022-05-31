@@ -1,0 +1,50 @@
+@import url('https://fonts.googleapis.com/css2?family=Tiro+Devanagari+Marathi:ital@0;1&display=swap');
+
+*{
+    box-sizing: border-box;
+    margin: 0 !important;
+    padding: 0 !important;
+    font-family: 'Tiro Devanagari Marathi', serif;
+    background-image: radial-gradient( circle farthest-corner at 10% 20%,  rgba(0,152,155,1) 0.1%, rgba(0,94,120,1) 94.2% );
+}
+
+nav{
+     padding: 0.5rem !important;
+}
+
+#form input, #form button{
+    padding: 0.5rem !important;
+}
+
+#navbarSupportedContent ul li a, #logo a{
+    padding: 0.5rem !important;
+}
+
+/* Gallery */
+
+.mode{
+    padding: 0.5rem !important;
+}
+
+#resize{
+    height: 40vh !important;
+    width: 20rem !important;
+    margin: 0.5rem 0 !important;
+}
+
+/* @media (min-width:120px) and (max-width:478px) {
+    .img-size{
+        width:100% !important;
+    }
+    .small{
+        display: flex;
+        flex-direction:column;
+    } 
+    
+}
+@media screen and (max-width:578px) {
+    .img-size{
+        width:70% !important;
+    }
+    
+} */
