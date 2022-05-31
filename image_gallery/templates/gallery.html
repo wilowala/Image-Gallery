@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    {{block.super}}
+    <main class="home container-fluid mode" >
+    <div class="d-flex justify-content-around flex-wrap" >
+        {% for gal in gallery %}       
+        
+            
+            <div id="resize">
+                <button type="button" class="btn img-size" data-bs-toggle="modal" data-bs-target="#image{{gal.id}}" data-aos="zoom-in-up" data-aos-duration="1000" style="height: 100%;width: 100%;">
+                    <img src="{{gal.image.url}}" class="img" alt="Image" style="height: 100%;width: 100%;">
+                </button>
+            </div>
+            
+            <!-- pop up -->
+            <div class="modal mode fade" id="image{{gal.id}}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true" style="padding: 0.8rem !important; margin:0.5rem !important;">
+                <div class="modal-dialog modal-dialog-centered mode">
+                <div class="modal-content bg-dark">
+                    <div class="modal-header">
+                    <h5 class="modal-title mode" id="staticBackdropLabel">{{ gal.img_name }}</h5>
+                    <button type="button" class="btn-close btn-outline mode" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body mode">
+                        <img src="{{gal.image.url}}" class="img-fluid" alt="Image">
+                        <p class="mode">
+                            {{gal.img_description}}
+                        </p>
+                        <div class="d-flex mode">
+                            <h4>Category: {{gal.category}} &nbsp;</h4>
+                            <h4> &nbsp; Lacated in: {{gal.location}}</h4>
+                        </div>
+                    </div>
+                    <div class="modal-footer mode">
+                    <button type="button" class="btn btn-outline mode" data-bs-dismiss="modal">Close</button>
+                    </div>
+                </div>
+                </div>
+            </div>
+        {% empty %}
+        <h2>Gallery is empty!! Come back  Later</h2> 
+        {% endfor %}         
+    </div>
+   </main>
+{% endblock %}
